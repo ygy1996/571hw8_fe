@@ -1,0 +1,16 @@
+.content{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow-y: hidden;
+}
+.rating{
+    background-color: black;
+    color:white;
+    border-left:10px solid black;
+    border-right:10px solid black;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+    border-radius: 25px;
+    display: inline-block;
+}

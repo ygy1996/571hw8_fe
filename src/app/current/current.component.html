@@ -1,0 +1,23 @@
+<ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" 
+class = "col-10 offset-1" style = "outline:none" [showNavigationIndicators]='!mobile'>
+  <ng-template ngbSlide *ngFor="let movie of movies; index as i" style = "z-index: 5">
+    <div class="target" *ngIf='!mobile'>
+      <a [routerLink] = "'watch/movie/' + movie.id" (click)="localsave(i)">
+        <div class="mask">
+          <p style = "font-size: 1.2rem;">{{movie.name}}</p>
+        </div>
+      </a>
+      <div class="picsum-img-wrapper" style = "max-height: 50vh;z-index:1">
+        <img [src]= "movie.back_path" class="img-fluid" style = "max-height: 100%;" >
+      </div>
+    </div>
+    <div class="m_target" *ngIf='mobile'>
+      <a [routerLink] = "'watch/movie/' + movie.id" (click)="localsave(i)">
+        <div class="m_mask">
+          <p style = "font-size: 0.8rem;">{{movie.name}}</p>
+        </div>
+      </a>
+      <img [src]= "movie.back_path" width='100%'>
+    </div>
+  </ng-template>
+</ngb-carousel>

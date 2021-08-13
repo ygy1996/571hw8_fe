@@ -1,0 +1,59 @@
+<div class='row pt-3'>
+  <div class = 'col-10 offset-1'>
+    <h2 style = "color:white;">Full Cast and Crew</h2>
+    <div class="container-fluid testimonial-group">
+      <div class="row">
+        <div class="card col-5 col-sm-2 p-0 m-sm-1 m-3" *ngFor='let actor of cast; index as i' (click)='openmodal(i,content)'>
+          <img class="card-img-top" [src]="actor.path">
+          <p class="card-text mr-2 ml-2">
+            <b>{{actor.name}}<br>as<br></b>{{actor.character}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h1 class="modal-title" id="modal-basic-title">{{person.name}}</h1>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class='row'>
+      <div class='col-12 col-sm-3'>
+        <img [src]='path' class = "img-fluid">
+      </div>
+      <div class='col-12 col-sm-9'>
+        <p>
+          <span *ngIf='person.birthday'>Birth: {{person.birthday}}<br></span>
+          <span *ngIf='person.place'>Birth Place: {{person.place}}<br></span>
+          <span>Gender: {{person.gender}}<br></span>
+          <span *ngIf='person.homepage'>Website: {{person.homepage}}<br></span>
+          <span *ngIf='person.known'>Known for: {{person.known}}<br></span>
+          <span *ngIf='person.also'>Also Known as: {{person.also}}<br></span>
+        </p>
+        <p style='font-size: 2rem;'>
+          <a *ngIf='accounts.imdb' [href]="'http://imdb.com/name/'+accounts.imdb" target="_blank">
+            <i class="fab fa-imdb" [placement]='place' ngbPopover="Visit imdb" triggers="mouseenter:mouseleave" style='color:rgb(226,182,43); padding: 5px;'></i>
+          </a>
+          <a *ngIf='accounts.instagram' [href]="'http://instagram.com/'+accounts.instagram" target="_blank">
+            <i class="fab fa-instagram" ngbPopover="Visit Instagram" triggers="mouseenter:mouseleave" style='color:purple; padding: 5px;'></i>
+          </a>
+          <a *ngIf='accounts.facebook' [href]="'http://facebook.com/'+accounts.faccebook" target="_blank">
+            <i class="fab fa-facebook-square" ngbPopover="Visit Facebook" triggers="mouseenter:mouseleave" style='color:blue; padding: 5px;'></i>
+          </a>
+          <a *ngIf='accounts.twitter' [href]="'http://twitter.com/'+accounts.twitter" target="_blank">
+            <i class="fab fa-twitter" ngbPopover="Visit Twitter" triggers="mouseenter:mouseleave" style='color:rgb(30,144,255); padding: 5px;'></i>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class='row p-2'>
+      <h1 *ngIf='!mobile'>Biography</h1>
+      <h5 *ngIf='mobile'>Biography</h5>
+      <p>{{person.biography}}</p>
+    </div>
+  </div>

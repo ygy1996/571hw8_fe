@@ -1,0 +1,45 @@
+<div *ngIf="tvs">
+  <ngb-carousel *ngIf="mobile" [showNavigationArrows]='true' [showNavigationIndicators]='false' style='outline: none;' interval='false'>
+    <ng-template ngbSlide *ngFor="let tv of tvs">
+      <div class = "container-fluid">
+        <div class = "row mb-3 mt-2">
+          <div class = "col-8 offset-2">
+            <div class = "card mr-2 ml-2 border-0" style = "background-color: rgb(5,10,50);">
+              <img *ngIf = "tv.path" [src] = "tv.path" class = "img-fluid">
+              <a [routerLink] = "'/watch/tv/' + tv.id" (click)='localsave(x,y)'>
+                <div class = "m_mask">
+                  <p class = "m_title">
+                    {{tv.name}}
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+ </ngb-carousel>
+
+  <!-- Desktop section : multiple images per slide -->
+  <ngb-carousel *ngIf="!mobile" style = "outline: none;" class = "col" interval="false">
+      <ng-template ngbSlide *ngFor="let group of tvsFormatted; index as x">
+          <div class = "container-fluid">
+            <div class = "row mb-5 mt-2" style = "margin-left: 7%; margin-right: 7%;">
+              <div class = "col" *ngFor="let tv of group; index as y">
+                <div class = "desktop card p-2 border-0" style = "background-color: rgb(5,10,50);">
+                  <img *ngIf = "tv.path" [src] = "tv.path" class = "img-fluid">
+                  <div *ngIf = "!tv.path" style = "width:8vw"></div>
+                  <a *ngIf = "tv.name" [routerLink] = "'/watch/tv/' + tv.id" (click)='localsave(x,y)'>
+                    <div class = "mask">
+                      <p class = "title">
+                        {{tv.name}}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </ng-template>
+  </ngb-carousel>
+</div>

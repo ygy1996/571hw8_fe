@@ -1,0 +1,6 @@
+:host ::ng-deep .navbar{
+    background-color: rgb(2,12,33) !important;
+}
+.active{
+    color:white
+}

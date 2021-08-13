@@ -1,0 +1,23 @@
+<div *ngIf='!show' class='container-fluid' style='text-align: center; padding-top: 10vh;'>
+  <h1 style='color:white'>No items found in watchlist</h1>
+</div>
+<div *ngIf='show' class='container-fluid'>
+  <h1 style='color:white' class='offset-1 pt-3'>My Watchlist</h1>
+  <div class='col-10 offset-1 pt-3'>
+    <div class='row'>
+      <div class='card col-sm-2 offset-sm-0 p-sm-4 col-10 offset-1 p-3' *ngFor='let item of list; index as i' style = "background-color: rgb(5,10,50);">
+        <img [src] = "item.path" class = "img-fluid">
+        <a *ngIf='!mobile' [routerLink] = "'/watch/'+ item.media_type + '/' + item.id" (click)='localsave(i)'>
+          <div class = "mask">
+            <p class = "title">{{item.name}}</p>
+          </div>
+        </a>
+        <a *ngIf='mobile' [routerLink] = "'/watch/'+ item.media_type + '/' + item.id" (click)='localsave(i)'>
+          <div class = "m_mask">
+            <p class = "title">{{item.name}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class='row pt-3'>
+  <h1 class='offset-1' style="color:white">{{title}}</h1>
+</div>
+<div class='row pt-3'>
+  <ngb-carousel *ngIf='!mobile' style = "outline: none;" class = "col" interval="false">
+    <ng-template ngbSlide *ngFor="let group of itemsFormatted; index as x">
+        <div class = "container-fluid">
+          <div class = "row mb-5 mt-2" style = "margin-left: 7%; margin-right: 7%;">
+            <div class = "col" *ngFor="let item of group; index as y">
+              <div class = "card p-2 border-0" style = "background-color: rgb(5,10,50);">
+                <img *ngIf = "item.path" [src] = "item.path" class = "img-fluid">
+                <div *ngIf = "!item.path" style = "width:8vw"></div>
+                <a *ngIf = "item.name&&item.media_type==='tv'" [routerLink] = "'/watch/tv/' + item.id" (click)='localsave(x,y)'>
+                  <div class = "mask">
+                    <p class = "title">{{item.name}}</p>
+                  </div>
+                </a>
+                <a *ngIf = "item.name&&item.media_type==='movie'" [routerLink] = "'/watch/movie/' + item.id" (click)='localsave(x,y)'>
+                  <div class = "mask">
+                    <p class = "title">{{item.name}}</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </ng-template>
+  </ngb-carousel>
+  <ngb-carousel *ngIf="mobile" [showNavigationArrows]='true' [showNavigationIndicators]='false' style='outline: none;' interval='false'>
+    <ng-template ngbSlide *ngFor="let item of items">
+      <div class = "container-fluid">
+        <div class = "row mb-3 mt-2">
+          <div class = "col-8 offset-2">
+            <div class = "card mr-2 ml-2 border-0" style = "background-color: rgb(5,10,50);">
+              <img *ngIf = "item.path" [src] = "item.path" class = "img-fluid">
+              <a *ngIf ="item.media_type==='movie'"[routerLink] = "'/watch/movie/' + item.id" (click)='localsave(x,y)'>
+                <div class = "m_mask">
+                  <p class = "m_title">{{item.name}}</p>
+                </div>
+              </a>
+              <a *ngIf ="item.media_type==='tv'"[routerLink] = "'/watch/tv/' + item.id" (click)='localsave(x,y)'>
+                <div class = "m_mask">
+                  <p class = "m_title">{{item.name}}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

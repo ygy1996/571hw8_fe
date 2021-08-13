@@ -1,0 +1,22 @@
+/* The heart of the matter */
+.testimonial-group > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .testimonial-group > .row > .col-sm-2 {
+    display: inline-block;
+    vertical-align:top
+  }
+  .testimonial-group > .row > .col-5 {
+    display: inline-block;
+    vertical-align:top
+  }
+ .card-text{
+     text-align: center;
+ }
+ .card{
+     border-radius: 1rem;
+     overflow: hidden;
+     white-space: normal
+ }

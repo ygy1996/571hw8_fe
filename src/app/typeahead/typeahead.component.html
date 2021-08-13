@@ -1,0 +1,10 @@
+<input id="typeahead-http" type="text" class="form-control mr-sm-2 rounded-0 border-left-0 border-right-0 border-top-0" 
+ [ngbTypeahead]="search" placeholder="Search" [resultTemplate]="rt" style = "background-color: transparent; color:white" />
+
+  <ng-template #rt let-r="result" let-t="term">
+    <a [routerLink]="'/'+r.media_type+'/'+r.id" style='color:white' (click)='localsave(r.name, r.id, r.path, r.media_type)'>
+       <img [src]="r.back_path" class="mr-3" style="width: 60px">
+       <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+    </a>  
+   </ng-template>
+ 

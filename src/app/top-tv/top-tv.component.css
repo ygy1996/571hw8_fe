@@ -1,0 +1,43 @@
+.desktop:hover img{
+    transform: scale(1.07);
+}
+.mask{
+    display: none;
+    background: linear-gradient(rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.9));
+    z-index:5;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.title{
+    color: white;
+    font-size: 1rem;
+    position:absolute;
+    left: 5%;
+    bottom: 0%;
+}
+
+.desktop:hover .mask{
+    display: block;
+}
+
+.m_mask{
+    background: linear-gradient(rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.9));
+    z-index:5;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+.m_title{
+    color: white;
+    font-size: 1rem;
+    position:absolute;
+    left: 5%;
+    bottom:0;
+}

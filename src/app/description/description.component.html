@@ -1,0 +1,44 @@
+<div class='row pt-3'>
+  <div class = 'col-10 col-sm-6 offset-1'>
+    <div class="embed-responsive embed-responsive-16by9">
+      <youtube-player [videoId]="videoId" ></youtube-player>
+    </div>
+  </div>
+  <div class='col-10 offset-1 col-sm-4 offset-sm-0 pt-2'>
+    <h1 style = 'color:white'>{{details.title}}</h1>
+    <i style = 'color: rgb(200,200,200); font-size: 1.5rem;'>{{details.tag}}<br><br></i>
+    <p style = 'color: rgb(200,200,200); font-size: 1.5rem;'>{{details.date}} | &#x2605;{{details.vote}} | {{details.time}}</p>
+    <p style = 'color: rgb(200,200,200); font-size: 1.2rem;'>
+      <span style = 'color: white; font-size: 1rem;'>Genres: </span>{{details.genres}}<br>
+      <span style = 'color: white; font-size: 1rem;'>Spoken Languages: </span>{{details.languages}}
+    </p>
+    <br>
+    <p>
+      <button class="btn btn-primary" (click)="changelist()">{{text}}</button>
+    </p>
+    <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]='type' (closed)="closealert()">{{ alerttext }}
+    </ngb-alert>
+  </div>
+</div>
+<div class='row pt-3'>
+  <div class = 'col-10 offset-1'>
+    <h2 style = "color:white; font-size: 1.2rem;">Description</h2>
+    <p style = "color: rgb(200,200,200)">{{details.overview}}</p>
+  </div>
+</div> 
+
+<div class='row pt-3'>
+  <div class = 'col-10 offset-1'>
+    <h3 style = "color:white; font-size: 1.2rem;">share</h3>
+    <a [href]="'https://twitter.com/intent/tweet?text='+details.title+'%0ahttps://www.youtube.com/watch?v='+videoId+'%0a%23USC%20%23CSCI571%20%23FightOn'"
+    style = "font-size: 1.5rem;" target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <span>&#160;</span>
+    <a [href]="'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v='+videoId"
+    style = "font-size: 1.5rem;" target="_blank"> 
+      <i class="fab fa-facebook-square"></i>
+    </a>
+  </div>
+</div>
+
